@@ -1,0 +1,18 @@
+@tailwind base;
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600&display=swap');
+html, body {
+    @apply font-recto text-recto-light uppercase;
+}
+
+html, body {
+    font-size: 16px;
+    background-color: transparent;
+    height:100%;
+    line-height: 130%;
+}
+#app {
+    min-height: 100%;
+}
+
+@tailwind components;
+@tailwind utilities;
