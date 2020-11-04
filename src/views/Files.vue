@@ -7,7 +7,7 @@
         v-for="(file, index) in this.$store.state.files.data"
         :key="index"
         :file="file"
-        @click.native="gotofile"
+        @click.native="gotofile(file.id)"
       />
     </div>
     <span class="spaceBottom"></span>
@@ -28,11 +28,11 @@ export default {
   name: "files",
   components: { topbar, file },
   methods: {
-        gotofile: async function() {
+        gotofile: async function(id) {
             /* await this.$store.dispatch("loadingScreen/ISLOADING", true); */
-            await this.$router.push({ name: "Report" });
+            await this.$router.push({ name: "Report", params: {id: id} });
             // eslint-disable-next-line no-undef
-            mp.trigger("getFileRecto");
+            mp.trigger("getFileRecto", id);
             
         }
     }

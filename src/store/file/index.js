@@ -50,7 +50,7 @@ export default {
         fine: fine
       };
       // eslint-disable-next-line no-undef
-      mp.trigger("addReportRecto", JSON.stringify(fineId));
+      mp.trigger("addReportPDA", JSON.stringify(fineId));
     }
   }
 };
