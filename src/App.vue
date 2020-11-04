@@ -5,6 +5,7 @@
       alt="rugged tablet"
       class="absolute bottom-0 right-0 z-50 pointer-events-none rugged-tablet"
     />
+    <button class="buttonClose z-50" @click="closePDA"></button>
     <div
       class="recto-screen overflow-y-scroll"
       :style="{
@@ -30,7 +31,13 @@ import loadingScreen from "./components/loadingScreen";
 export default {
   name: "app",
   mixins: [bgPattern],
-  components: { loadingScreen }
+  components: { loadingScreen },
+  methods: {
+    closePDA: function() {
+      // eslint-disable-next-line no-undef
+        mp.trigger("closePDA");
+    }
+  }
 };
 </script>
 <style lang="scss">
@@ -44,7 +51,13 @@ export default {
   bottom: 260px;
   right: 502px;
 }
-
+.buttonClose {
+  width: 148px;
+  height: 95px;
+  position: absolute;
+  bottom: 130px;
+  right: 600px;
+}
 /* width */
 ::-webkit-scrollbar {
   width: 10px;

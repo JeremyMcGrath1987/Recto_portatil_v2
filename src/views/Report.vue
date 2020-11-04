@@ -77,8 +77,8 @@
           {{ singleFile.name }}
         </li>
         <li>
-          <span class="font-bold">Identificación:</span>
-          {{ singleFile.identification }}
+          <span class="font-bold">Id:</span>
+          {{ singleFile.id }}
         </li>
       </ul>
       <span class="spaceTopReport"></span>
@@ -113,7 +113,7 @@
                     {{ delito.pena }}
                     <span class="text-xs">meses</span>
                     <p></p>
-                    {{ formatPrice(delito.multa) }} $$
+                    {{ formatPrice(delito.multa) }} $
                   </td>
                   <td class="px-4 py-2 configPaddingAdd">
                     <a
@@ -147,11 +147,13 @@ export default {
   components: { topBar },
   mixins: [singleFile, formatPrice],
   async mounted() {
+    // eslint-disable-next-line no-undef
+    mp.trigger("getArticlesList");
     await this.$store.dispatch("loadingScreen/ISLOADING", false);
   },
   computed: {
     filteredList() {
-      return this.$store.state.penalCode.filter(delito => {
+      return this.$store.state.articlesList.data.filter(delito => {
         let d = delito.numero + " " + delito.titulo.toLowerCase();
         let s = this.search.toLowerCase();
         return d.includes(s);
@@ -185,7 +187,7 @@ export default {
         arts: [],
         pena: undefined,
         multa: undefined,
-        agente: undefined,
+        user: undefined,
         fecha: moment()
       };
       this.selected.forEach(delito => {
@@ -193,9 +195,10 @@ export default {
       });
       fine.pena = this.calculateMonths;
       fine.multa = this.calculateFine;
-      fine.agente = this.$store.state.officer.placa;
+      fine.user = this.$store.state.user.data.name;
       await this.$store.dispatch("ADDFINE", fine);
-      await this.$router.push({ name: "Files" });
+      await this.$router.push({ name: "Home" });
+      await this.$store.dispatch("loadingScreen/ISLOADING", false);
     }
   }
 };

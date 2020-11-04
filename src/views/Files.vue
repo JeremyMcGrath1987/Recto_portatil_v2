@@ -4,7 +4,7 @@
     <div class="files-wrapper flex flex-wrap p-4 filePosition">
       <file
         class="w-1/1 sm:w-1/1 md:w-1/1 lg:w-1/1 xl:w-1/1 p-1"
-        v-for="(file, index) in files"
+        v-for="(file, index) in this.$store.state.files.data"
         :key="index"
         :file="file"
         @click.native="gotofile"
@@ -27,111 +27,15 @@ import file from "../components/file";
 export default {
   name: "files",
   components: { topbar, file },
-  data: () => {
-    return {
-      files: [
-        {
-          name: "Frank Castle",
-          id: "2856",
-          identification: "X4388998899"
-        },
-        {
-          name: "Natasha Romanoff",
-          id: "12854",
-          identification: "N48569951"
-        },
-        {
-          name: "harley Quinn",
-          id: "1784",
-          identification: "Z478451262"
-        },
-        {
-          name: "Frank Castle",
-          id: "2856",
-          identification: "X4388998899"
-        },
-        {
-          name: "Natasha Romanoff",
-          id: "12854",
-          identification: "N48569951"
-        },
-        {
-          name: "harley Quinn",
-          id: "1784",
-          identification: "Z478451262"
-        },
-        {
-          name: "Frank Castle",
-          id: "2856",
-          identification: "X4388998899"
-        },
-        {
-          name: "Natasha Romanoff",
-          id: "12854",
-          identification: "N48569951"
-        },
-        {
-          name: "harley Quinn",
-          id: "1784",
-          identification: "Z478451262"
-        },
-        {
-          name: "Frank Castle",
-          id: "2856",
-          identification: "X4388998899"
-        },
-        {
-          name: "Natasha Romanoff",
-          id: "12854",
-          identification: "N48569951"
-        },
-        {
-          name: "harley Quinn",
-          id: "1784",
-          identification: "Z478451262"
-        },
-        {
-          name: "Frank Castle",
-          id: "2856",
-          identification: "X4388998899"
-        },
-        {
-          name: "Natasha Romanoff",
-          id: "12854",
-          identification: "N48569951"
-        },
-        {
-          name: "harley Quinn",
-          id: "1784",
-          identification: "Z478451262"
-        },
-        {
-          name: "Frank Castle",
-          id: "2856",
-          identification: "X4388998899"
-        },
-        {
-          name: "Natasha Romanoff",
-          id: "12854",
-          identification: "N48569951"
-        },
-        {
-          name: "harley Quinn",
-          id: "1784",
-          identification: "Z478451262"
-        }
-      ]
-    };
-  },
-  mounted() {
-    this.$store.dispatch("loadingScreen/ISLOADING", false);
-  },
   methods: {
-    gotofile: async function() {
-      await this.$store.dispatch("loadingScreen/ISLOADING", true);
-      await this.$router.push({ name: "Report" });
+        gotofile: async function() {
+            /* await this.$store.dispatch("loadingScreen/ISLOADING", true); */
+            await this.$router.push({ name: "Report" });
+            // eslint-disable-next-line no-undef
+            mp.trigger("getFileRecto");
+            
+        }
     }
-  }
 };
 </script>
 <style lang="scss">

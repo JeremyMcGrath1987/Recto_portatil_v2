@@ -13,12 +13,13 @@ moment.locale("en", {
 
 export default {
   state: {
-    name: "Frank Castle",
-    id: 2856,
-    identification: "X4388998899",
-    antecedentes: []
+    data:
+    {}
   },
   actions: {
+    SETFILE: (context, file) => {
+      context.commit("setFile", file);
+    },
     TOGGLESTATUS: (context, status) => {
       context.commit("toggleStatus", status);
     },
@@ -29,11 +30,27 @@ export default {
     }
   },
   mutations: {
-    toggleStatus: (state, status) => {
-      state[status] = !state[status];
+    setFile: (state, file) => {
+      state.data = file;
     },
+    /* toggleStatus: (state, status) => {
+      state.data[status] = !state.data[status];
+      let statusId = {
+        userId: state.data.id,
+        status: status
+      };
+      // eslint-disable-next-line no-undef
+      mp.trigger("toggleStatusPDA", JSON.stringify(statusId));
+
+    }, */
     addFine: (state, fine) => {
-      state.antecedentes.unshift(fine);
+      state.data.antecedentes.unshift(fine);
+      let fineId = {
+        userId: state.data.id,
+        fine: fine
+      };
+      // eslint-disable-next-line no-undef
+      mp.trigger("addReportRecto", JSON.stringify(fineId));
     }
   }
 };

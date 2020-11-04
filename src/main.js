@@ -8,7 +8,7 @@ require("vue2-animate/dist/vue2-animate.min.css");
 
 Vue.config.productionTip = false;
 
-new Vue({
+window.app = new Vue({
   router,
   store,
   render: h => h(App)

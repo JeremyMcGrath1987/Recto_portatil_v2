@@ -16,7 +16,11 @@
 import search from "../components/search";
 export default {
   name: "Home",
-  components: { search }
+  components: { search },
+  mounted() {
+    // eslint-disable-next-line no-undef
+    mp.trigger("getUserData");
+  }
 };
 </script>
 <style lang="scss">

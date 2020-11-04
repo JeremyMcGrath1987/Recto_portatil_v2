@@ -3,8 +3,9 @@ import Vuex from "vuex";
 import loadingScreen from "./loadingScreen";
 import search from "./search";
 import file from "./file";
-import penalCode from "./penalCode";
-import officer from "./officer";
+import articlesList from "./articlesList";
+import user from "./user";
+import files from "./files";
 Vue.use(Vuex);
 
 export default new Vuex.Store({
@@ -15,7 +16,8 @@ export default new Vuex.Store({
     loadingScreen,
     search,
     file,
-    penalCode,
-    officer
+    articlesList,
+    user,
+    files
   }
 });

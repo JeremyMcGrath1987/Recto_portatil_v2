@@ -5,8 +5,8 @@
         >
             <ul class="file-data">
                 <li>{{ file.name }}</li>
-                <li>{{ file.identification }}</li>
                 <li>{{ file.id }}</li>
+                <li>{{ file.stateCountry }}</li>
             </ul>            
         </div>
     </div>
@@ -20,14 +20,14 @@ export default {
             required: true
         }
     },
-    computed: {
+    /* computed: {
         fileImage: function() {
             return (
                 this.file.image ||
                 require("../assets/images/file_bg_pattern.png")
             );
         }
-    }
+    } */
 };
 </script>
 
