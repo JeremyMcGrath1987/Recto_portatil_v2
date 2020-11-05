@@ -10,7 +10,11 @@ export default {
     },
     mutations: {
       setFiles: (state, filesLite) => {
-        state.data = filesLite;
+        if(filesLite.length<=0){
+          state.data = {message: "No hay coincidencias en el sistema"}
+        }else{
+          state.data = filesLite;
+        }
       }
     }
   };

@@ -1,7 +1,7 @@
 <template>
   <div class="files flex flex-col flex-no-wrap">
      <span class="spaceTop"></span>
-    <div class="files-wrapper flex flex-wrap p-4 filePosition">
+    <div v-if="!this.$store.state.files.data.message" class="files-wrapper flex flex-wrap p-4 filePosition">
       <file
         class="w-1/1 sm:w-1/1 md:w-1/1 lg:w-1/1 xl:w-1/1 p-1"
         v-for="(file, index) in this.$store.state.files.data"
@@ -10,6 +10,7 @@
         @click.native="gotofile(file.id)"
       />
     </div>
+    <div ><p class="text-xl flex items-center justify-center messagePosition">{{this.$store.state.files.data.message}}</p></div>
     <span class="spaceBottom"></span>
     <topbar />  
     <div class="buttonPosition bg-recto-dark">
@@ -54,6 +55,10 @@ export default {
 }
 .filePosition{
     height: 100%;
+}
+.messagePosition{
+  margin-top: 20px;
+  margin-left: 7px;
 }
 .spaceTop{
     margin-bottom: 57px;
