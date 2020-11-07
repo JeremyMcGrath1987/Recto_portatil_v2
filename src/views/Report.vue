@@ -188,7 +188,7 @@ export default {
         pena: undefined,
         multa: undefined,
         user: undefined,
-        fecha: moment().format('D MMMM YYYY, h:mm:ss')
+        fecha: moment().format('D MMMM YYYY, H:mm:ss')
       };
       this.selected.forEach(delito => {
         fine.arts.push(`${delito.numero}. - ${delito.titulo}`);
